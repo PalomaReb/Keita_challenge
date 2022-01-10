@@ -46,7 +46,7 @@ logOut: {
 // },
 
 login: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
     backgroundColor: theme.palette.primary.main,
     borderRadius: theme.shape.borderRadius,
     textTransform: "none",
@@ -59,7 +59,7 @@ login: {
 
 loginForm: {
     "& label": {
-        color: "black",
+        color: theme.palette.text.primary,
         textAlign: "center"
     },
 },
@@ -72,7 +72,8 @@ errorTXT: {
 
 input: {
     marginBottom: "40px",
-    width: "100%"
+    width: "100%",
+    color:theme.palette.text.secondary,
 },
 loginContainer: {
     textAlign: "center"
@@ -95,6 +96,13 @@ header: {
     justifyContent: "sapce-between",
     padding: "15px"
 },
+
+
+///______________________________________________subForm___________________________________
+
+text:{
+    marginBottom:"1.5rem"
+}
 
 
 }));

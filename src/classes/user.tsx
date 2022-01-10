@@ -1,8 +1,7 @@
-import {USERS} from "../allowedUsers";
+async function findUser(email: String){
 
-function findUser(email: String){
-    /*
-    fetch("allowedUsers.db", { 
+    let localUser:any; 
+    await fetch("allowedUsers.db", { 
         headers: {
             "Content-Type" : "application/json",
             "Accept" : "application/json"
@@ -18,10 +17,12 @@ function findUser(email: String){
         localUser = d.filter((user:{id:number,username:String,password:String,role:String}) => user.username === email);
         console.log(localUser);
     });
-    */
-   
-    const localUser:any = USERS.filter((user:{id:number,username:String,password:String,role:String}) => user.username === email);
+
     return localUser[0];
+
+   
+    // localUser:any = USERS.filter((user:{id:number,username:String,password:String,role:String}) => user.username === email);
+    // return localUser[0];
 }
 
 class UserAuth {
@@ -34,11 +35,11 @@ class UserAuth {
         this.role = "";
     }
 
-    login(user: {username: String, password: String}, callback:any, error:any){
-        const newUser:any = findUser(user.username);
+    async login(user: {username: String, password: String}, callback:any, error:any){
+        const newUser:any = await findUser(user.username);
         //console.log(user,newUser);
         if(newUser !== undefined && user.username === newUser.username && user.password === newUser.password){
-            localStorage.setItem("token", btoa(newUser.username + ":" + newUser.password));
+            sessionStorage.setItem("token", btoa(newUser.username + ":" + newUser.password));
             this.authenticated = true;
             this.role = newUser.role;
             callback(); 
@@ -48,13 +49,16 @@ class UserAuth {
     }
 
     logout(callback:any){
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         this.authenticated = false;
         this.role = "";
         callback();
     }
 
-    isAuthenticated = () => this.authenticated;   
+    isAuthenticated = ()=> {
+        this.authenticated = (sessionStorage.getItem("token")) ? true : false;
+        return this.authenticated;
+    }
 }
 
 export default new UserAuth();
