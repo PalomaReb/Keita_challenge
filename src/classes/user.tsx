@@ -26,7 +26,6 @@ async function findUser(email: String){
 }
 
 class UserAuth {
-
     authenticated : Boolean;
     role : String;
 
@@ -35,7 +34,7 @@ class UserAuth {
         this.role = "";
     }
 
-    async login(user: {username: String, password: String}, callback:any, error:any){
+    async login(user: {username: String, password: String}, callback:Function, error:Function){
         const newUser:any = await findUser(user.username);
         //console.log(user,newUser);
         if(newUser !== undefined && user.username === newUser.username && user.password === newUser.password){
