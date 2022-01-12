@@ -1,108 +1,114 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme) => ({
+  //____________________________________LOGIN CSS______________________________________________
 
-    //____________________________________LOGIN CSS______________________________________________
+  klogo: {
+    height: "120px",
+    marginBottom: "20px",
+  },
 
-klogo:{
-    height:"120px",
-    marginBottom:"20px"
-},
+  button: {
+    borderRadius: theme.shape.borderRadius,
+    textTransform: "none",
+    padding: "15px 30px",
+    letterSpacing: "2px",
+    marginBottom: "20px",
+    width: "100%",
+  },
 
-button: {
-        borderRadius: theme.shape.borderRadius,
-        textTransform: "none",
-        padding: "15px 30px",
-        letterSpacing: "2px",
-        marginBottom: "20px",
-        width: "100%"
-    },
-
-loginText: {
+  loginText: {
     textAlign: "left",
     marginBottom: "40px",
-    marginTop: "5px"
-},
-logOut: {
+    marginTop: "5px",
+  },
+  logOut: {
     color: theme.palette.text.hint,
     border: `1px solid ${theme.palette.text.primary}`,
     padding: "5px 30px",
     width: "auto",
-    '&:hover': {
-        color: theme.palette.text.secondary,
-        backgroundColor: theme.palette.primary.main,
-        border: `1px solid ${theme.palette.primary.main}`
-    }
-},
-// register: {
-//     border: `1px solid ${theme.palette.text.primary}`,
-//     marginTop: "20px",
-//     width: "80%",
-//     '&:hover': {
-//         color: theme.palette.text.secondary,
-//         backgroundColor: theme.palette.primary.main,
-//         border: `1px solid ${theme.palette.primary.main}`
-//     }
-// },
+    "&:hover": {
+      color: theme.palette.text.secondary,
+      backgroundColor: theme.palette.primary.main,
+      border: `1px solid ${theme.palette.primary.main}`,
+    },
+  },
+  // register: {
+  //     border: `1px solid ${theme.palette.text.primary}`,
+  //     marginTop: "20px",
+  //     width: "80%",
+  //     '&:hover': {
+  //         color: theme.palette.text.secondary,
+  //         backgroundColor: theme.palette.primary.main,
+  //         border: `1px solid ${theme.palette.primary.main}`
+  //     }
+  // },
 
-login: {
+  login: {
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.primary.main,
     borderRadius: theme.shape.borderRadius,
     textTransform: "none",
-    '&:hover': {
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.text.primary,
-        border: `1px solid ${theme.palette.primary.main}`
-    }
-},
-
-loginForm: {
-    "& label": {
-        color: theme.palette.text.primary,
-        textAlign: "center"
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.text.primary,
+      border: `1px solid ${theme.palette.primary.main}`,
     },
-},
+  },
 
-errorTXT: {
+  loginForm: {
+    "& label": {
+      color: theme.palette.text.primary,
+      textAlign: "center",
+    },
+  },
+
+  errorTXT: {
     color: theme.palette.warning.main,
     marginBottom: "15px",
-    fontWeight: "bold"
-},
+    fontWeight: "bold",
+  },
 
-input: {
+  input: {
     marginBottom: "40px",
     width: "100%",
-    color:theme.palette.text.secondary,
-},
-loginContainer: {
-    textAlign: "center"
-},
-loginBox: {
+    color: theme.palette.text.secondary,
+  },
+  loginContainer: {
+    textAlign: "center",
+  },
+  loginBox: {
     borderRadius: theme.shape.borderRadius,
     padding: "10%",
     border: `4px solid ${theme.palette.primary.main}`,
-    height: "100%"
-},
+    height: "100%",
+  },
 
-// ___________________________HEADER CSS ___________________________________
+  // ___________________________HEADER CSS ___________________________________
 
-logo: {
-    height: "80px"
-},
-header: {
+  logo: {
+    height: "80px",
+  },
+  header: {
     display: "flex",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "sapce-between",
-    padding: "15px"
-},
+    padding: "15px",
+  },
 
+  ///______________________________________________subForm___________________________________
 
-///______________________________________________subForm___________________________________
+  text: {
+    marginBottom: "1.5rem",
+  },
 
-text:{
-    marginBottom:"1.5rem"
-}
-
-
+  tableInfo: {
+    textAlign: "center",
+    marginLeft: "10px",
+    minWidth: 214,
+  },
+  textColor: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.secondary.main,
+  },
 }));
