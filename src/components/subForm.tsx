@@ -42,14 +42,12 @@ function SubForm() {
     <Grid>
       <Header></Header>
       <Typography color="primary" align="center" variant="h1">
-        {" "}
         Create a new subsidy
       </Typography>
       <Typography className={classes.text} align="center">
-        {" "}
         Please insert your information below.
       </Typography>
-      <form onSubmit={handleSubmit} className={classes.loginForm}>
+      <form onSubmit={handleSubmit} className={classes.form}>
         <TextField
           className={classes.input}
           inputProps={{ minLength: 3 }}
@@ -77,7 +75,7 @@ function SubForm() {
           required
           className={classes.input}
         />
-        <Button type="submit" className={`${classes.button} ${classes.login}`}>
+        <Button type="submit" className={classes.button}>
           Submit
         </Button>
       </form>
