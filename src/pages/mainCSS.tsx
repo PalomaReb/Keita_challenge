@@ -8,46 +8,18 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "20px",
   },
 
-  button: {
-    borderRadius: theme.shape.borderRadius,
-    textTransform: "none",
-    padding: "15px 30px",
-    letterSpacing: "2px",
-    marginBottom: "20px",
-    width: "100%",
-  },
-
   loginText: {
     textAlign: "left",
     marginBottom: "40px",
     marginTop: "5px",
   },
-  logOut: {
-    color: theme.palette.text.hint,
-    border: `1px solid ${theme.palette.text.primary}`,
-    padding: "5px 30px",
-    width: "auto",
-    "&:hover": {
-      color: theme.palette.text.secondary,
-      backgroundColor: theme.palette.primary.main,
-      border: `1px solid ${theme.palette.primary.main}`,
-    },
-  },
-  // register: {
-  //     border: `1px solid ${theme.palette.text.primary}`,
-  //     marginTop: "20px",
-  //     width: "80%",
-  //     '&:hover': {
-  //         color: theme.palette.text.secondary,
-  //         backgroundColor: theme.palette.primary.main,
-  //         border: `1px solid ${theme.palette.primary.main}`
-  //     }
-  // },
 
-  login: {
-    color: theme.palette.text.primary,
+  button: {
+    color: theme.palette.secondary.main,
+    padding: "15px 30px",
     backgroundColor: theme.palette.primary.main,
     borderRadius: theme.shape.borderRadius,
+    margin: "5px 10px",
     textTransform: "none",
     "&:hover": {
       backgroundColor: theme.palette.secondary.main,
@@ -56,10 +28,13 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
-  loginForm: {
+  form: {
     "& label": {
       color: theme.palette.text.primary,
       textAlign: "center",
+    },
+    "& button": {
+      width: "100%",
     },
   },
 
@@ -74,9 +49,11 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     color: theme.palette.text.secondary,
   },
+
   loginContainer: {
     textAlign: "center",
   },
+
   loginBox: {
     borderRadius: theme.shape.borderRadius,
     padding: "10%",
@@ -89,11 +66,24 @@ export const useStyles = makeStyles((theme) => ({
   logo: {
     height: "80px",
   },
+
   header: {
     display: "flex",
     alignItems: "center",
     justifyContent: "sapce-between",
     padding: "15px",
+  },
+
+  desktopMenu: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+
+  mobileMenu: {
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
 
   ///______________________________________________subForm___________________________________
@@ -103,12 +93,48 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   tableInfo: {
-    textAlign: "center",
-    marginLeft: "10px",
-    minWidth: 214,
+    "& td": {
+      width: "20%",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: ".6rem",
+      },
+    },
   },
+
   textColor: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.secondary.main,
+    "& th": {
+      color: theme.palette.secondary.main,
+      backgroundColor: theme.palette.primary.main,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: ".64rem",
+      },
+    },
+  },
+
+  approvedTXT: {
+    color: theme.palette.text.hint,
+    fontSize: ".8rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: ".6rem",
+    },
+  },
+
+  tableContainer: {
+    maxHeight: "78vh",
+  },
+
+  trash: {
+    color: theme.palette.warning.main,
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+
+  mobileBTN: {
+    [theme.breakpoints.down("xs")]: {
+      margin: 0,
+      padding: "5px 8px",
+      fontSize: ".6rem",
+    },
   },
 }));
