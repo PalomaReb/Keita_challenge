@@ -1,6 +1,8 @@
+import { Base64 } from "js-base64";
+
 async function findUser(email: String) {
   let localUser: any;
-  await fetch("allowedUsers.db", {
+  await fetch("/allowedUsers.db", {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -21,13 +23,9 @@ async function findUser(email: String) {
           role: String;
         }) => user.username === email
       );
-      console.log(localUser);
     });
 
   return localUser[0];
-
-  // localUser:any = USERS.filter((user:{id:number,username:String,password:String,role:String}) => user.username === email);
-  // return localUser[0];
 }
 
 class UserAuth {
@@ -40,20 +38,22 @@ class UserAuth {
   }
 
   async login(
-    user: { username: String; password: String },
+    user: { username: string; password: string },
     callback: Function,
     error: Function
   ) {
     const newUser: any = await findUser(user.username);
-    //console.log(user,newUser);
+    const salt: string = "ke1ta$Chall3nge";
+    const hashedPWD: string = Base64.encode(salt + user.password);
+
     if (
       newUser !== undefined &&
       user.username === newUser.username &&
-      user.password === newUser.password
+      hashedPWD === newUser.password
     ) {
       sessionStorage.setItem(
         "token",
-        btoa(newUser.username + ":" + newUser.password)
+        Base64.encode(newUser.username + ":" + newUser.password)
       );
       this.authenticated = true;
       this.role = newUser.role;
@@ -64,7 +64,6 @@ class UserAuth {
   }
 
   logout(callback: Function) {
-    // cambio de any a function
     sessionStorage.removeItem("token");
     this.authenticated = false;
     this.role = "";
