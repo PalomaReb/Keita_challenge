@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Typography } from "@material-ui/core";
-import { useStyles } from "./mainCSS";
+import { useStyles } from "../assets/css/mainCSS";
 import { Header } from "../components/header";
 import SubForm from "../components/subForm";
+import UserAuth from "../classes/user";
+import { useNavigate } from "react-router-dom";
 
 function CreateSubsidy() {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Create a new subsidy | Keita";
+    if (!UserAuth.isAuthenticated()) {
+      navigate("/");
+    }
+  });
 
   return (
-    <Grid item xs={12}>
+    <Grid>
       <Header></Header>
       <Typography color="primary" align="center" variant="h1">
         Create a new subsidy

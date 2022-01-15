@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import { Grid, TextField, Button, Typography } from "@material-ui/core";
 import Subs from "../classes/subs";
-import { useStyles } from "../pages/mainCSS";
-import { Header } from "./header";
-
-// interface Subsidy{
-//   origin: String,
-//   destination : String,
-//   value: number,
-//   approved : Boolean,
-// }
+import { useNavigate } from "react-router-dom";
+import { useStyles } from "../assets/css/mainCSS";
 
 function SubForm() {
   const classes = useStyles();
+  const navigate = useNavigate();
+
   const [inputMessage, setInputMessage] = useState(String);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (e.target.checkValidity()) {
       const subForm: any = {
+        id: Subs.getSubs()[Subs.getSubs().length - 1].id + 1,
         origin: e.target.origin.value,
         destination: e.target.destination.value,
         value: e.target.value.value,
@@ -27,26 +23,14 @@ function SubForm() {
 
       Subs.addSub(
         subForm,
-        () => {
-          setInputMessage(
-            "Thank you for your submission, your subsidy will be reviewed."
-          );
-          // Redirigir al listado
-        },
+        () => navigate("/view-subsidies"),
         () =>
           setInputMessage("An error ocurred, please review your information.")
       );
     }
   };
   return (
-    <Grid>
-      <Header></Header>
-      <Typography color="primary" align="center" variant="h1">
-        Create a new subsidy
-      </Typography>
-      <Typography className={classes.text} align="center">
-        Please insert your information below.
-      </Typography>
+    <Grid item xs={10} md={8}>
       <form onSubmit={handleSubmit} className={classes.form}>
         <TextField
           className={classes.input}
@@ -75,11 +59,11 @@ function SubForm() {
           required
           className={classes.input}
         />
+        <Typography>{inputMessage}</Typography>
         <Button type="submit" className={classes.button}>
           Submit
         </Button>
       </form>
-      <Typography>{inputMessage}</Typography>
     </Grid>
   );
 }
