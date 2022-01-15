@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Grid, Menu, MenuItem } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { useStyles } from "../pages/mainCSS";
+import { useStyles } from "../assets/css/mainCSS";
 import logo from "../assets/keitaLogo.jpg";
 import UserAuth from "../classes/user";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export function Header() {
   const classes = useStyles();
@@ -27,26 +27,31 @@ export function Header() {
         <img alt="logo" className={classes.logo} src={logo} />
       </Grid>
       <Grid className={classes.desktopMenu} item>
-        <Button
-          onClick={() => navigate("/create-subsidies")}
-          className={classes.button}
+        <NavLink
+          to="/create-subsidies"
+          className={({ isActive }) =>
+            classes.links + (isActive ? " " + classes.active : "")
+          }
         >
           Create new subsidy
-        </Button>
-        <Button
-          onClick={() => navigate("/view-subsidies")}
-          className={classes.button}
+        </NavLink>
+        <NavLink
+          to="/view-subsidies"
+          className={({ isActive }) =>
+            classes.links + (isActive ? " " + classes.active : "")
+          }
         >
           View subsidies
-        </Button>
+        </NavLink>
       </Grid>
       <Grid className={classes.desktopMenu} item>
-        <Button
+        <NavLink
+          to="/"
           onClick={() => UserAuth.logout(() => navigate("/"))}
-          className={classes.button}
+          className={classes.links}
         >
           Logout
-        </Button>
+        </NavLink>
       </Grid>
       <Button
         className={classes.mobileMenu}
@@ -61,11 +66,22 @@ export function Header() {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
+        onClose={() => setAnchorEl(null)}
       >
-        <MenuItem onClick={() => navigate("/view-subsidies")}>
+        <MenuItem
+          onClick={() => {
+            navigate("/view-subsidies");
+            setAnchorEl(null);
+          }}
+        >
           View subsidies
         </MenuItem>
-        <MenuItem onClick={() => navigate("/create-subsidies")}>
+        <MenuItem
+          onClick={() => {
+            navigate("/create-subsidies");
+            setAnchorEl(null);
+          }}
+        >
           Create new subsidy
         </MenuItem>
         <MenuItem onClick={() => UserAuth.logout(() => navigate("/"))}>
