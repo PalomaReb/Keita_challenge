@@ -10,14 +10,14 @@ interface handleInputChange {
 function FilterBox(props: handleInputChange) {
   const classes = useStyles();
   return (
-    <Grid container justifyContent="center" className={classes.text}>
+    <Grid container justifyContent="center" className={classes.mb}>
       <FormControl>
         <InputLabel shrink htmlFor="filter-native-label-placeholder">
           Filter by:
         </InputLabel>
         <NativeSelect
-          value={props.val}
-          onChange={props.oc}
+          value={props.val} // prop value display.
+          onChange={props.oc} // use oc function prop to display change needed.
           inputProps={{
             name: "Filter",
             id: "filter-native-label-placeholder",

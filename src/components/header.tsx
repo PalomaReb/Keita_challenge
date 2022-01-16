@@ -3,7 +3,7 @@ import { Button, Grid, Menu, MenuItem } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useStyles } from "../assets/css/mainCSS";
 import logo from "../assets/keitaLogo.jpg";
-import UserAuth from "../classes/user";
+import UserAuth from "../classes/userAuth";
 import { useNavigate, NavLink } from "react-router-dom";
 
 export function Header() {
@@ -29,16 +29,18 @@ export function Header() {
       <Grid className={classes.desktopMenu} item>
         <NavLink
           to="/create-subsidies"
-          className={({ isActive }) =>
-            classes.links + (isActive ? " " + classes.active : "")
+          className={
+            ({ isActive }) =>
+              classes.links + (isActive ? " " + classes.active : "") // active links to know what page you are currently on
           }
         >
           Create new subsidy
         </NavLink>
         <NavLink
           to="/view-subsidies"
-          className={({ isActive }) =>
-            classes.links + (isActive ? " " + classes.active : "")
+          className={
+            ({ isActive }) =>
+              classes.links + (isActive ? " " + classes.active : "") // active links to know what page you are currently on
           }
         >
           View subsidies
@@ -47,14 +49,14 @@ export function Header() {
       <Grid className={classes.desktopMenu} item>
         <NavLink
           to="/"
-          onClick={() => UserAuth.logout(() => navigate("/"))}
+          onClick={() => UserAuth.logout(() => navigate("/"))} // active not needed since it will take you to the log in page
           className={classes.links}
         >
           Logout
         </NavLink>
       </Grid>
       <Button
-        className={classes.mobileMenu}
+        className={classes.mobileMenu} // hamburguer menu section
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}

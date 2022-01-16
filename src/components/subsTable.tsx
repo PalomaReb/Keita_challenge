@@ -28,6 +28,7 @@ function SubsTable() {
     setPage(newPage);
   };
 
+  //set how many rows will be visible and the page change.
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -35,6 +36,9 @@ function SubsTable() {
     setPage(0);
   };
 
+  // filter function in order to see the subsidies by approved not approved or the default setting all.
+  //filter variable is a state variable so it is inicialized as all subs.
+  //switch in case there are more filters needed in the future.
   const filtering = (filter: string) => {
     switch (filter) {
       case "Approved":
@@ -55,10 +59,12 @@ function SubsTable() {
   return (
     <Grid>
       <FilterBox
+        // send functions as props to set filter in table.
         oc={(e: React.ChangeEvent<{ value: string }>) => {
           setFilterSubs(e.target.value);
           filtering(e.target.value);
         }}
+        // send input value as prop.
         val={filterSubs}
       ></FilterBox>
       <TableContainer className={classes.tableContainer}>
@@ -79,7 +85,6 @@ function SubsTable() {
           <TableBody className={classes.tableInfo}>
             {subsList.length > 0 ? (
               subsList.map((item: typeof Subs, index: number) => {
-                // cambio de any a object
                 return (
                   <TableRow key={index}>
                     <TableCell align="center">
@@ -129,6 +134,7 @@ function SubsTable() {
                 );
               })
             ) : (
+              // show message if there are no subsidies saved in the localstorage.
               <TableRow>
                 <TableCell colSpan={5}>No subsidies found.</TableCell>
               </TableRow>

@@ -2,7 +2,12 @@ import React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme/theme";
 import { Container } from "@material-ui/core";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/login";
 import SubsList from "./pages/listSubsidies";
 import CreateSubsidy from "./pages/createSubsidy";
@@ -13,7 +18,8 @@ function App() {
       <Container>
         <Router>
           <Routes>
-            <Route path="/*" element={<Login />} />
+            <Route path="/*" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/create-subsidies" element={<CreateSubsidy />} />
             <Route path="/view-subsidies" element={<SubsList />} />
           </Routes>

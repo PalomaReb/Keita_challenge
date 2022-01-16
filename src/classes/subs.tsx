@@ -6,19 +6,21 @@ class Subs {
   approved: Boolean;
 
   constructor() {
-    this.id = this.getSubs().length;
+    this.id = this.getSubs()[this.getSubs().length - 1].id + 1;
     this.origin = "";
     this.destination = "";
     this.value = 0;
     this.approved = false;
   }
 
+  // function created to get all the subsidies in the local storage since the subs do not have to be stored in any bbdd.
   getSubs() {
     return localStorage.getItem("subsidies") !== null
       ? JSON.parse(localStorage.getItem("subsidies") || "")
       : [];
   }
 
+  // function created to add all new subsidies created into the local storage.
   addSub(sub: Subs, callback: Function, error: Function) {
     // validar objeto - datos de objeto correcto
     if (
@@ -36,6 +38,7 @@ class Subs {
     }
   }
 
+  // status of subsidy changed in this function from not approved to approved.
   approveSub(id: number, callback: Function) {
     if (typeof id === "number" && id >= 0) {
       let subApproved: Array<Subs> = this.getSubs();
@@ -50,6 +53,7 @@ class Subs {
     }
   }
 
+  // function created to delete the subsidy targeted.
   deleteSub(id: number, callback: Function) {
     if (typeof id === "number" && id >= 0) {
       let deleteSub: Array<Subs> = this.getSubs();
@@ -61,7 +65,7 @@ class Subs {
       }
     }
   }
-
+  // save all subs into the local Storage this is it´s own function since it is used several times in other functions.
   storeSubs(subs: Array<Subs>) {
     localStorage.setItem("subsidies", JSON.stringify(subs));
   }

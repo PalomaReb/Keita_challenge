@@ -3,7 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { useStyles } from "../assets/css/mainCSS";
 import { Header } from "../components/header";
 import SubForm from "../components/subForm";
-import UserAuth from "../classes/user";
+import UserAuth from "../classes/userAuth";
 import { useNavigate } from "react-router-dom";
 
 function CreateSubsidy() {
@@ -13,7 +13,7 @@ function CreateSubsidy() {
   useEffect(() => {
     document.title = "Create a new subsidy | Keita";
     if (!UserAuth.isAuthenticated()) {
-      navigate("/");
+      navigate("/login");
     }
   });
 
@@ -23,7 +23,7 @@ function CreateSubsidy() {
       <Typography color="primary" align="center" variant="h1">
         Create a new subsidy
       </Typography>
-      <Typography className={classes.text} align="center">
+      <Typography className={classes.mb} align="center">
         Please insert your information below.
       </Typography>
       <Grid container justifyContent="center">

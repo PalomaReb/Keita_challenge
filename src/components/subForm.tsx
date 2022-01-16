@@ -10,11 +10,12 @@ function SubForm() {
 
   const [inputMessage, setInputMessage] = useState(String);
 
+  // handlesubmit where the values of the subsidy form are validated, and the ".addSubs" function is called in order to save the subsidy in the local storage.
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (e.target.checkValidity()) {
       const subForm: any = {
-        id: Subs.getSubs()[Subs.getSubs().length - 1].id + 1,
+        id: Subs.getSubs()[Subs.getSubs().length - 1].id + 1, // give new id to all subsidies created in order to know which one will be deleted.
         origin: e.target.origin.value,
         destination: e.target.destination.value,
         value: e.target.value.value,
@@ -23,9 +24,9 @@ function SubForm() {
 
       Subs.addSub(
         subForm,
-        () => navigate("/view-subsidies"),
+        () => navigate("/view-subsidies"), // once created the user will be sent to the list
         () =>
-          setInputMessage("An error ocurred, please review your information.")
+          setInputMessage("An error ocurred, please review your information.") // if something is not correct in the creation of a new sub, an error message will be shown.
       );
     }
   };
@@ -55,7 +56,7 @@ function SubForm() {
           variant="outlined"
           type="number"
           name="value"
-          inputProps={{ step: 0.01, min: 0 }}
+          inputProps={{ step: 0.01, min: 0 }} // decimal incrementation allowed.
           required
           className={classes.input}
         />

@@ -1,3 +1,5 @@
+//header display component 
+
 interface TableInfo {
     id: "Origin" | "Destination" | "Value" | "Approved" | "Delete";
     label: string;

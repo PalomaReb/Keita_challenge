@@ -3,7 +3,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../components/header";
 import SubsTable from "../components/subsTable";
-import UserAuth from "../classes/user";
+import UserAuth from "../classes/userAuth";
 
 function SubsList() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function SubsList() {
   useEffect(() => {
     document.title = "View Subsidies | Keita";
     if (!UserAuth.isAuthenticated()) {
-      navigate("/");
+      navigate("/login");
     }
   });
 
