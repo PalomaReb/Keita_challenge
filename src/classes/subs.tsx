@@ -6,7 +6,7 @@ class Subs {
   approved: Boolean;
 
   constructor() {
-    this.id = this.getSubs()[this.getSubs().length - 1].id + 1;
+    this.id = 0;
     this.origin = "";
     this.destination = "";
     this.value = 0;

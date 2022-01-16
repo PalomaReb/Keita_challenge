@@ -2,13 +2,11 @@
     {
         "id":0,
         "username":"test@keita.mobi",
-        "password":"a2UxdGEkQ2hhbGwzbmdldGVzdA==",
-       
+        "password":"a2UxdGEkQ2hhbGwzbmdldGVzdA=="
     },
     { 
         "id":1,
         "username":"test2@keita.mobi",
-        "password":"a2UxdGEkQ2hhbGwzbmdldGVzdDI=",
-        
+        "password":"a2UxdGEkQ2hhbGwzbmdldGVzdDI="    
     }
 ]
