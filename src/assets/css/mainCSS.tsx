@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme) => ({
-  //____________________________________LOGIN CSS______________________________________________
-
   background: {
     background: "linear-gradient(to right, #ffffff 0%, #1da3cf 100%)",
   },
@@ -64,8 +62,6 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
 
-  // ___________________________HEADER CSS ___________________________________
-
   logo: {
     height: "68px",
   },
@@ -103,9 +99,7 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 
-  ///______________________________________________subForm___________________________________
-
-  text: {
+  mb: {
     marginBottom: "1.5rem",
   },
 
